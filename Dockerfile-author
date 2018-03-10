@@ -1,0 +1,3 @@
+# DOCKER-VERSION 1.0.1
+FROM lexmarkweb/docker-aem-author
+MAINTAINER sharpslinger
