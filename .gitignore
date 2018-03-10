@@ -1,0 +1,6 @@
+# ignore all AEM JAR and properties files
+*.jar
+*.properties
+
+# no zips either
+*.zip
