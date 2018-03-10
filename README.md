@@ -1,7 +1,7 @@
 # aem-docker
 A docker implementation of AEM.
 
-Originally sourced from LexmarkWeb/docker-aem-author
+Originally sourced from [LexmarkWeb/docker-aem-author](https://github.com/LexmarkWeb/docker-aem-author)
 
 ## Requirements
 Requires the following files to be present in the root:
