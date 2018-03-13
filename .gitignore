@@ -3,4 +3,5 @@
 *.properties
 
 # no zips either
+**/packages
 *.zip
