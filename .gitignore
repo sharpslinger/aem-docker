@@ -3,7 +3,7 @@
 *.properties
 
 # ignore downloading assets (VML-specific)
-downloadassets.sh
+init.sh
 
 # no zips either
 **/packages
