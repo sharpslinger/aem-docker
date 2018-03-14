@@ -15,9 +15,9 @@ RUN chmod +x /aem/install-aem.sh /aem/finalize-publish.sh
 RUN /aem/install-aem.sh publisher
 
 WORKDIR /aem/crx-quickstart/bin
-# Port swap for publisher
+# Port swap and runmode change for publisher
 RUN cp quickstart quickstart.original
-RUN cat quickstart.original | sed "s|4502|4503|g" > quickstart
+RUN cat quickstart.original | sed "s|4502|4503|g" | sed "s|\#CQ\_RUNMODE=\'\'|CQ\_RUNMODE=\'publish\'|g" > quickstart
 
 EXPOSE 4503 8000
 ENTRYPOINT ["/aem/crx-quickstart/bin/quickstart"]
