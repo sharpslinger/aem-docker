@@ -9,10 +9,8 @@ COPY aem/* /aem/
 
 WORKDIR /aem
 
-# initialize (download assets)
-#RUN chmod +x /aem/init.sh
+# clean up the line endings in the event these were Windows-edited
 RUN sed -i 's/\r$//' /aem/finalize.sh /aem/install-aem.sh
-#RUN /aem/init.sh
 
 # unpack, then install
 RUN java -XX:MaxPermSize=256m -Xmx1024M -jar aem-quickstart-6.1.jar -unpack -r nosamplecontent
