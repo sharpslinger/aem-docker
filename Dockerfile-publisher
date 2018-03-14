@@ -1,0 +1,23 @@
+FROM openjdk:8
+
+MAINTAINER sharpslinger
+
+RUN apt-get update && apt-get install netcat -y
+
+# Copy over files
+COPY aem/ /aem/
+
+WORKDIR /aem
+
+# unpack, then install
+RUN java -Xmx2048m -Xms1024m -XX:MaxPermSize=1024m -jar aem-quickstart-6.1.jar -unpack -r publish -p 4503
+RUN chmod +x /aem/install-aem.sh /aem/finalize-publish.sh
+RUN /aem/install-aem.sh publisher
+
+WORKDIR /aem/crx-quickstart/bin
+# Port swap for publisher
+RUN cp quickstart quickstart.original
+RUN cat quickstart.original | sed "s|4502|4503|g" > quickstart
+
+EXPOSE 4503 8000
+ENTRYPOINT ["/aem/crx-quickstart/bin/quickstart"]
