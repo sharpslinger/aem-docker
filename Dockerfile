@@ -5,7 +5,7 @@ MAINTAINER sharpslinger
 RUN apt-get update && apt-get install netcat -y
 
 # Copy over files
-COPY aem/* /aem/
+COPY aem/ /aem/
 
 WORKDIR /aem
 
@@ -13,7 +13,7 @@ WORKDIR /aem
 RUN sed -i 's/\r$//' /aem/finalize.sh /aem/install-aem.sh
 
 # unpack, then install
-RUN java -XX:MaxPermSize=256m -Xmx1024M -jar aem-quickstart-6.1.jar -unpack -r nosamplecontent
+RUN java -Xmx20148m -Xms1024m -XX:MaxPermSize=1024m -jar aem-quickstart-6.1.jar -unpack -r nosamplecontent
 RUN chmod +x /aem/install-aem.sh /aem/finalize.sh
 RUN /aem/install-aem.sh
 
