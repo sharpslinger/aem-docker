@@ -2,6 +2,9 @@
 *.jar
 *.properties
 
+# ignore downloading assets (VML-specific)
+downloadassets.sh
+
 # no zips either
 **/packages
 *.zip
